@@ -41,7 +41,7 @@ st.sidebar.write("Negara dengan produksi minyak terbesar pada tahun ",
     "tampilkan pada Grafik B")
 
 n_tampil = st.sidebar.number_input("Jumlah negara yang ingin ditampilkan pada Grafik B dan C", 
-    min_value=1, max_value=15, value=5)
+    min_value=1, max_value=10, value=5)
 
 ## Grafik A
 st.subheader('Grafik A')
@@ -64,7 +64,9 @@ data_grafik_b = data_grafik_b.iloc[:n_tampil]
 
 title_b= str(n_tampil) + ' negara dengan produksi minyak terbesar pada tahun ' + str(select_tahun)
 
-fig_b = px.bar(data_grafik_b, x='name', y='produksi', title = title_b)
+fig_b = px.bar(data_grafik_b, x='name', y='produksi', title = title_b,
+    color = 'name')
+fig_b.update_layout(showlegend=False) 
 st.plotly_chart(fig_b)
 
 
@@ -80,7 +82,9 @@ data_agregat_fix = pd.merge(data_agregat, kode[['name','alpha-3']], left_on=['ko
 
 title_c= str(n_tampil) + ' negara dengan produksi minyak kumulatif terbesar'
 
-fig_c = px.bar(data_agregat_fix, x='name', y='produksi', title = title_c)
+fig_c = px.bar(data_agregat_fix, x='name', y='produksi', 
+    color='name', title = title_c)
+fig_c.update_layout(showlegend=False) 
 st.plotly_chart(fig_c)
 
 
