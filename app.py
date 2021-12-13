@@ -9,7 +9,7 @@ import plotly.express as px
 from PIL import Image
 
 ############## data ################3
-df = pd.read_csv("data/produksi_minyak_mentah_lengkap.csv")
+dk = pd.read_csv("data/produksi_minyak_mentah_lengkap.csv")
 df_tabel = pd.read_csv("data/produksi_minyak_mentah_lengkap.csv")
 kode = pd.read_csv("data/kode_negara_lengkap.csv")
 
@@ -97,7 +97,7 @@ st.subheader('Tabel Representasi Data')
 st.dataframe(df_tabel)
 
 ####
-st.subheader('SUMMARY')
+st.subheader('SUMMARY').
 
 #data
 data_agregat_c = df.groupby('kode_negara').sum().sort_values(by='produksi', ascending=False).reset_index()
@@ -107,7 +107,7 @@ data_agregat_fix_c = pd.merge(data_agregat_c, kode[['name','alpha-3','region','s
 
 #data untuk negara max
 data_max = data_agregat_fix_c.loc[data_agregat_fix_c['produksi'] >= data_agregat_fix_c['produksi'].max(),
-                      ['kode_negara', 'name', 'produksi', 'region', 'sub-region']]
+                      ['kode_negara', 'name', 'produksi', 'region', 'sub-region']],
 
 text_max = ('Produksi Minyak Terbesar  \n' + 
             '  \nNama negara: ' + data_max['name'].values[0] +
