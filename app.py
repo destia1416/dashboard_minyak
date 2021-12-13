@@ -97,7 +97,7 @@ st.subheader('Tabel Representasi Data')
 st.dataframe(df_tabel)
 
 ####
-st.subheader('SUMMARY').
+st.subheader('SUMMARY')
 
 #data
 data_agregat_c = df.groupby('kode_negara').sum().sort_values(by='produksi', ascending=False).reset_index()
